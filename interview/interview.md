@@ -62,3 +62,18 @@ The way I would approach the problem would be to break it down into requirements
 		| ComposeTweetViewController | UIViewController      |
         
 The above list may not be complete, but it outlines a great start to building a Twitter applicaiton.
+
+
+### __Describe some techniques that can be used to ensure that a UITableView containing many UITableViewCell is displayed at 60 frames per second.__
+
+----
+
+ - All the work that the apple developers have put into allocating and deallocating the table view cell in the background is remarkable. But with such specific requirments it would come upon the developer to best make use of the tools provided.
+ - In general case the automatic allocation and deallocation of the cells is effecient enough. There comes some limitation to assigning the entire tableview with the outlets like delegate and datasource.
+ - We can further finetune the allocation process with the help of the following method 
+ ``` 
+ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        code
+    } 
+```
+   - This function give you command over the action that needs to be done when a new cell is about to be allocated.
