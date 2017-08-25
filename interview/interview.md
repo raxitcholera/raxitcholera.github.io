@@ -92,7 +92,8 @@ __How might you improve the design of this view controller?__
 
 ----
 
- - In the above description it seems like that developer had put up all the content into a single file, which does not abide by the *Model View Controller* paradigm so I would refactor the coding standard and do the following steps. Doing so the code would be much more reusable and easier to test plus debug.
+In the above description it seems like that developer had put up all the content into a single file, which does not abide by the *Model View Controller* paradigm so I would refactor the coding standard and do the following steps. Doing so the code would be much more reusable and easier to test plus debug.
+
  - I would refactor the code into separate classes.  
  - I would create a model class for storing the data to a persistent store.  
  - I would also create a separate `GithubAPI` model class that handled the network requests and data parsing.  
