@@ -77,3 +77,22 @@ The above list may not be complete, but it outlines a great start to building a 
     } 
 ```
    - This function give you command over the action that needs to be done when a new cell is about to be allocated.
+
+### __Imagine that you have been given a project that has this ActorViewController. The ActorViewController should be used to display information about an actor. However, to send information to other ViewControllers, it uses NSUserDefaults. Does this make sense to you? How would you send information from one ViewController to another one?__
+
+----
+
+ - The approach suggested in Question #5 does not make sense to me and I will explain why.
+
+NSUserDefaults is not a smart solution for persisting any data other than user settings and there are far better solutions for persisting data on the iOS mobile platform.
+
+### __Imagine that you have been given a project that has this GithubProjectViewController. The GithubProjectViewController should be used to display high-level information about a GitHub project. However, it’s also responsible for finding out if there’s network connectivity, connecting to GitHub, parsing the responses and persisting information to disk. It is also one of the biggest classes in the project.__
+
+__How might you improve the design of this view controller?__
+
+----
+
+ - In the above description it seems like that developer had put up all the content into a single file, which does not abide by the *Model View Controller* paradigm so I would refactor the coding standard and do the following steps. Doing so the code would be much more reusable and easier to test plus debug.
+ - I would refactor the code into separate classes.  
+ - I would create a model class for storing the data to a persistent store.  
+ - I would also create a separate `GithubAPI` model class that handled the network requests and data parsing.  
