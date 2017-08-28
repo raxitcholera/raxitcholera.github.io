@@ -91,6 +91,107 @@ The approach suggested in the question does not make sense to me for the followi
  - I would recommend creating an individual NSManagedObject model class for the *Actor*.
  - The class would be accessible through the `fetch request` from within any ViewController and simply save changes using `managedObjectContexts` created using a  `CoreDataStackManager` class.
 
+ -- Actor CoreDataProperties 
+
+ ```
+
+import CoreData
+import Foundation
+
+extension Actor {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Actor> {
+        return NSFetchRequest<Actor>(entityName: "Actor")
+    }
+
+    @NSManaged public var name: String?
+    @NSManaged public var profilePhoto: String?
+    @NSManaged public var actorBio: String?
+    
+
+}
+
+```
+-- Actor CoreDataClass 
+
+```
+
+import Foundation
+import CoreData
+
+
+public class Actor: NSManagedObject {
+    convenience init(dictionary: [String:Any], context: NSManagedObjectContext)
+    {
+        if let ent = NSEntityDescription.entity(forEntityName: "Actor", in: context)
+        {
+            self.init(entity: ent, insertInto: context)
+            self.name = dictionary["name"] as? String ?? ""
+            self.profilePhoto = dictionary["profilePhoto"] as? String ?? ""
+            self.actorBio = dictionary["actorBio"] as? String ?? ""
+
+        }
+            
+        else
+        {
+            fatalError("Unable to find Entity name!")
+        }
+    }
+}
+
+```
+
+-- Actor ViewController
+
+```
+import UIKit
+
+class ActorViewController {
+    
+    @IBOutlet weak var actorNameLabel: UILabel!
+    @IBOutlet weak var actorImageView: UIImageView!
+    
+    var actorArray: [Actor]!
+    
+    actorArray = Actors.allObjects as? [Actors] ?? [Actors]()
+
+    //Safe way to transfer the information form one view to other while tableView cell gets selected.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performOnMainthread {
+            let actorDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "actorDetailViewController") as! ActorDetailViewController
+            actorDetailViewController.selectedActor = self.actorArray[indexPath.row]
+            self.navigationController?.pushViewController(actorDetailViewController, animated: true)
+        }
+    }
+    			
+}
+```
+ -- Actor DetailViewController
+
+```
+import UIKit
+
+class ActorDetailViewController {
+    
+    @IBOutlet weak var actorNameLabel: UILabel!
+    @IBOutlet weak var actorImageView: UIImageView!
+    @IBOutlet weak var actorBio: UITextView!
+    
+
+	override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        actorNameLabel.text = selectedActor.name
+
+        actorImageView.image = UIImage(named: selectedActor.profilePhoto)
+
+        actorBio.text = selectedActor.actorBio
+
+    }
+
+```
+
 ### __Imagine that you have been given a project that has this GithubProjectViewController. The GithubProjectViewController should be used to display high-level information about a GitHub project. However, it’s also responsible for finding out if there’s network connectivity, connecting to GitHub, parsing the responses and persisting information to disk. It is also one of the biggest classes in the project.__
 
 __How might you improve the design of this view controller?__
