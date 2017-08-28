@@ -205,7 +205,7 @@ In the above description, it seems like that developer had put up all the conten
 
 ----
 
- - One year from now, I will have finished my Masters in Computer Science along with one or two more Nanodegrees, which will lead me to become a stronger software developer with a better understanding of the entire development process.
+ - One year from now, I will have finished my Masters in Computer Science along with one or two more Nanodegrees, including React and VR Developer, which will lead me to become a stronger software developer with a better understanding of the entire development process.
  - I would like to be in a challenging role that puts me in the position to expand my current skill set. I will use all of the new skills that I have learned and best practices to create exceptional products for the company that I work for.
 
  - I will be continuing my recent projects of creating cocoapods to generate great applications with minimal rework but maximize the total amount of work done.
