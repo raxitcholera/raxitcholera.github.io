@@ -91,7 +91,7 @@ The approach suggested in the question does not make sense to me for the followi
  - I would recommend creating an individual NSManagedObject model class for the *Actor*.
  - The class would be accessible through the `fetch request` from within any ViewController and simply save changes using `managedObjectContexts` created using a  `CoreDataStackManager` class.
 
- -- Actor CoreDataProperties 
+-  Actor CoreDataProperties 
 
  ```
 
@@ -110,10 +110,8 @@ extension Actor {
     
 
 }
-
 ```
--- Actor CoreDataClass 
-
+- Actor CoreDataClass 
 ```
 
 import Foundation
@@ -141,7 +139,7 @@ public class Actor: NSManagedObject {
 
 ```
 
--- Actor ViewController
+- Actor ViewController
 
 ```
 import UIKit
@@ -167,7 +165,7 @@ class ActorViewController {
     			
 }
 ```
- -- Actor DetailViewController
+- Actor DetailViewController
 
 ```
 import UIKit
@@ -217,16 +215,3 @@ In the above description, it seems like that developer had put up all the conten
  - After a year of working at SmartThings, I will still be learning from my colleagues and applying all of the skills I gain to helping others to learn.  New inventions are released almost on regular bases and there is a lot of work that developers do behind the scene to make it happen. I am fascinated by new technological developments and to be able to push the limits of current boundaries will prove to be a fuel to keep working.
 
  - In summary, I will be continuing my professional and personal growth, using my newfound skills and applying the incredible passion that I have for all of the work that I do to make developers lives as easy as possible.
-
-
-### __Requirements__
-
- - Bachelor's degree in Computer Science or equivalent practical experience
- - Experience with Objective-C, Swift, Java, C# or C/C++ programming and debugging skills
- - Experience in developing native iOS Applications targeting iPhone and iPad
- - Strong understanding of application architecture and object-oriented design
- - iOS development experience, with deep knowledge of best practices, APIs and libraries
- - Experience with Git, Github, Pull Request and Rebasing
- - A passion for continuous learning and understanding
- - Ability to operate in fast-paced, deadline driven, collaborative and iterative programming environment
- - Experience building complex iOS Apps that have been successfully delivered to customers
